@@ -1,0 +1,24 @@
+- hosts: 35.210.45.163
+  sudo: yes
+  tasks:
+    - name: Install APACHE
+      apt: name=apache2 state=latest
+      
+    - name: Create document root
+      file:
+        path: "/var/www/html"
+        state: directory
+        owner: "gsus27497"
+        mode: '0755'
+
+    - name: Install PHP
+      apt: name=php update_cache=yes state=latest
+
+
+- hosts: 35.206.164.1
+  sudo: yes
+  tasks:
+    - name: Install MYSQL
+      apt: name=mysql-server update_cache=yes state=latest
+   
+   
